@@ -7,10 +7,9 @@ async function get(url, options = {}) {
   let fullUrl = url;
 
   if (query) {
-    fullUrl = `${fullUrl}?${qs.stringify(query)}`;
+    fullUrl = `${fullUrl}?${qs.stringify(query, {format: 'RFC1738'})}`;
   }
 
-  console.log(fullUrl);
   const res = await fetch(fullUrl, {
     headers: {
       Accept: 'application/vnd.github.v3+json',

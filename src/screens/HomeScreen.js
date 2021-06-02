@@ -6,6 +6,7 @@ import PopularScreen from './PopularScreen';
 import Screens from '../constants/screens';
 
 const Tab = createBottomTabNavigator();
+
 const HomeScreen = ({navigation, route}) => {
   return (
     <Tab.Navigator
@@ -17,6 +18,7 @@ const HomeScreen = ({navigation, route}) => {
       }}>
       <Tab.Screen
         name={Screens.Popular}
+        initialParams={{language: 'javascript'}}
         component={PopularScreen}
         options={{
           tabBarIcon: ({focused}) => (
