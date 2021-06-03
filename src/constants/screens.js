@@ -2,8 +2,9 @@ const Screens = {
   Home: 'Home',
   Welcome: 'Welcome',
   Profile: 'Profile',
-  Popular: 'Popular',
-  CustomTag: 'CustomTag',
+  Language: 'Language',
+  SelectLanguage: 'SelectLanguage',
+  SortLanguage: 'SortLanguage',
 };
 
 export default Screens;

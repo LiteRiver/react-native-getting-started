@@ -7,13 +7,13 @@ import {
   RefreshControl,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import Repository from '../../data/reponsitory';
+import git from '../../data/git';
 import Row, {getHeight, getOffset} from './Row';
 import Footer from './Footer';
 
 const PAGE_SIZE = 30;
 
-const PopularTab = ({language}) => {
+const LanguageTab = ({language}) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [refreshing, setRefreshing] = useState(false);
@@ -25,7 +25,7 @@ const PopularTab = ({language}) => {
     }
 
     try {
-      const res = await Repository.fetchTrending({
+      const res = await git.repo.getList({
         language: language,
         page: page,
         per_page: PAGE_SIZE,
@@ -130,8 +130,8 @@ const styles = StyleSheet.create({
   },
 });
 
-PopularTab.propTypes = {
+LanguageTab.propTypes = {
   language: PropTypes.string.isRequired,
 };
 
-export default PopularTab;
+export default LanguageTab;

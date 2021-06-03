@@ -5409,6 +5409,11 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-draggable-flatlist@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.nlark.com/react-native-draggable-flatlist/download/react-native-draggable-flatlist-2.6.2.tgz#d1445fd52e75bc4f4ebbd832a8bc4525cebb8302"
+  integrity sha1-0URf1S51vE9Ou9gyqLxFJc67gwI=
+
 react-native-fast-image@^8.3.4:
   version "8.3.4"
   resolved "https://registry.npm.taobao.org/react-native-fast-image/download/react-native-fast-image-8.3.4.tgz#79edca177e30311b19d59ff335625bcbe22650d7"
@@ -5440,10 +5445,10 @@ react-native-mmkv-storage@^0.5.9:
   resolved "https://registry.nlark.com/react-native-mmkv-storage/download/react-native-mmkv-storage-0.5.9.tgz#f4333c6fcae6475a786b1c0f907ae478bad2c91a"
   integrity sha1-9DM8b8rmR1p4axwPkHrkeLrSyRo=
 
-react-native-reanimated@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npm.taobao.org/react-native-reanimated/download/react-native-reanimated-2.1.0.tgz#b9ad04aee490e1e030d0a6cdaa43a14895d9a54d"
-  integrity sha1-ua0EruSQ4eAw0KbNqkOhSJXZpU0=
+react-native-reanimated@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.nlark.com/react-native-reanimated/download/react-native-reanimated-2.2.0.tgz#a6412c56b4e591d1f00fac949f62d0c72c357c78"
+  integrity sha1-pkEsVrTlkdHwD6yUn2LQxyw1fHg=
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.10.4"
     fbjs "^3.0.0"

@@ -1,59 +1,40 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Button,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
-import NavigationBar from '../components/NavigationBar';
+import React from 'react';
+import {View, Button, StyleSheet} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import Screens from '../constants/screens';
-
-const RightButton = props => {
-  return (
-    <View style={styles.rightButtonContainer}>
-      <TouchableOpacity onPress={() => console.log('Hello Icon')}>
-        <Image
-          source={require('../../res/images/ic_star.png')}
-          style={NavigationBar.iconStyle}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => console.log('Hello Icon')}>
-        <Image
-          source={require('../../res/images/ic_star.png')}
-          style={NavigationBar.iconStyle}
-        />
-      </TouchableOpacity>
-    </View>
-  );
-};
 
 const ProfileScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <NavigationBar rightButton={<RightButton />} title={'Profile'} />
-      <ScrollView style={styles.body}>
+    <ScrollView
+      style={styles.scrollView}
+      contentContainerStyle={styles.scrollViewContent}>
+      <View style={styles.btnBox}>
         <Button
-          title="Custom Tags"
-          onPress={() => navigation.push(Screens.CustomTag)}
+          title="Select Languages"
+          onPress={() => navigation.push(Screens.SelectLanguage)}
         />
-      </ScrollView>
-    </View>
+      </View>
+      <View style={styles.btnBox}>
+        <Button
+          title="Sort Languages"
+          onPress={() => navigation.push(Screens.SortLanguage)}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  scrollView: {
     flex: 1,
-    flexDirection: 'column',
-    alignContent: 'stretch',
+    backgroundColor: 'yellow',
   },
-  body: {
-    padding: 5,
+  scrollViewContent: {
+    padding: 10,
+    justifyContent: 'space-between',
   },
-  rightButtonContainer: {
-    flexDirection: 'row',
+  btnBox: {
+    marginBottom: 15,
   },
 });
 

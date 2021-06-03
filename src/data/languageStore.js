@@ -1,5 +1,5 @@
 import MMKVStorage from 'react-native-mmkv-storage';
-import defaultTags from './tags.json';
+import defaultTags from './languages.json';
 import helpers from '../helpers';
 
 const MMKV = new MMKVStorage.Loader().initialize();
@@ -14,7 +14,7 @@ const get = () => {
   return tags;
 };
 
-const getChecked = () => {
+const getSelected = () => {
   return get().filter(tag => tag.checked && tag.name !== 'ALL');
 };
 
@@ -22,4 +22,4 @@ const set = tags => {
   return MMKV.setArray(KEY, tags);
 };
 
-export default {get, set, getChecked};
+export default {get, set, getSelected};

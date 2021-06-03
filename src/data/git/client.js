@@ -10,6 +10,9 @@ async function get(url, options = {}) {
     fullUrl = `${fullUrl}?${qs.stringify(query, {format: 'RFC1738'})}`;
   }
 
+  console.log(':::::::::::::::::fetch data::::::::::::::');
+  console.log(fullUrl);
+
   const res = await fetch(fullUrl, {
     headers: {
       Accept: 'application/vnd.github.v3+json',

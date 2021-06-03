@@ -4,19 +4,20 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {ToastProvider} from 'react-native-fast-toast';
 import HomeScreen from './screens/HomeScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
-import CustomTagScreen from './screens/CustomTagScreen';
+import SelectLanguageScreen from './screens/SelectLanguageScreen';
+import SortLanguageScreen from './screens/SortLanguageScreen';
 import Screens from './constants/screens';
-import tagStore from './data/tagStore';
-import TagContext from './contexts/TagContext';
+import languageStore from './data/languageStore';
+import LanguageContext from './contexts/LanguageContext';
 
 const Stack = createStackNavigator();
 
 const Root = () => {
-  const [tags, setTags] = useState(tagStore.getChecked());
+  const [languages, selectLanguages] = useState(languageStore.getSelected());
 
   return (
     <ToastProvider>
-      <TagContext.Provider value={{tags, setTags}}>
+      <LanguageContext.Provider value={{languages, selectLanguages}}>
         <NavigationContainer>
           <Stack.Navigator
             initialRouteName="Welcome"
@@ -27,16 +28,24 @@ const Root = () => {
             <Stack.Screen name={Screens.Welcome} component={WelcomeScreen} />
             <Stack.Screen name={Screens.Home} component={HomeScreen} />
             <Stack.Screen
-              name={Screens.CustomTag}
-              component={CustomTagScreen}
+              name={Screens.SelectLanguage}
+              component={SelectLanguageScreen}
               options={{
                 headerShown: true,
-                title: 'Custom Tags',
+                title: 'Select Languages',
+              }}
+            />
+            <Stack.Screen
+              name={Screens.SortLanguage}
+              component={SortLanguageScreen}
+              options={{
+                headerShown: true,
+                title: 'Sort Languages',
               }}
             />
           </Stack.Navigator>
         </NavigationContainer>
-      </TagContext.Provider>
+      </LanguageContext.Provider>
     </ToastProvider>
   );
 };

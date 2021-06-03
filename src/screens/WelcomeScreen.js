@@ -14,9 +14,7 @@ const WelcomeScreen = ({navigation, route}) => {
       setSeconds(secondsRef.current);
       if (secondsRef.current === 0) {
         timerHandler && clearInterval(timerHandler);
-        navigation.dispatch(
-          StackActions.replace('Home', {title: 'strange title'}),
-        );
+        navigation.dispatch(StackActions.replace('Home'));
       }
     }, 1000);
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ProfileScreen from './ProfileScreen';
-import PopularScreen from './PopularScreen';
+import LanguageScreen from './LanguageScreen';
 import Screens from '../constants/screens';
 
 const Tab = createBottomTabNavigator();
@@ -17,9 +17,9 @@ const HomeScreen = ({navigation, route}) => {
         labelStyle: styles.tabLabel,
       }}>
       <Tab.Screen
-        name={Screens.Popular}
+        name={Screens.Language}
         initialParams={{language: 'javascript'}}
-        component={PopularScreen}
+        component={LanguageScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <Image

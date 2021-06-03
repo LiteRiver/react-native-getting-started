@@ -1,0 +1,127 @@
+[
+  {
+    "path": "C",
+    "name": "C",
+    "checked": true
+  },
+  {
+    "path": "C#",
+    "name": "C#",
+    "checked": false
+  },
+  {
+    "path": "C++",
+    "name": "C++",
+    "checked": false
+  },
+  {
+    "path": "CoffeeScript",
+    "name": "CoffeeScript",
+    "checked": false
+  },
+  {
+    "path": "CSS",
+    "name": "CSS",
+    "checked": false
+  },
+  {
+    "path": "Dart",
+    "name": "Dart",
+    "checked": false
+  },
+  {
+    "path": "DM",
+    "name": "DM",
+    "checked": false
+  },
+  {
+    "path": "Elixir",
+    "name": "Elixir",
+    "checked": false
+  },
+  {
+    "path": "Go",
+    "name": "Go",
+    "checked": false
+  },
+  {
+    "path": "Groovy",
+    "name": "Groovy",
+    "checked": false
+  },
+  {
+    "path": "HTML",
+    "name": "HTML",
+    "checked": false
+  },
+  {
+    "path": "JavaScript",
+    "name": "JavaScript",
+    "checked": true
+  },
+  {
+    "path": "Kotlin",
+    "name": "Kotlin",
+    "checked": false
+  },
+  {
+    "path": "Objective-C",
+    "name": "Objective-C",
+    "checked": false
+  },
+  {
+    "path": "Perl",
+    "name": "Perl",
+    "checked": false
+  },
+  {
+    "path": "PHP",
+    "name": "PHP",
+    "checked": false
+  },
+  {
+    "path": "PowerShell",
+    "name": "PowerShell",
+    "checked": false
+  },
+  {
+    "path": "Python",
+    "name": "Python",
+    "checked": false
+  },
+  {
+    "path": "Ruby",
+    "name": "Ruby",
+    "checked": false
+  },
+  {
+    "path": "Rust",
+    "name": "Rust",
+    "checked": false
+  },
+  {
+    "path": "Scala",
+    "name": "Scala",
+    "checked": false
+  },
+  {
+    "path": "Shell",
+    "name": "Shell",
+    "checked": false
+  },
+  {
+    "path": "Swift",
+    "name": "Swift",
+    "checked": false
+  },
+  {
+    "path": "TypeScript",
+    "name": "TypeScript",
+    "checked": false
+  },
+  {
+    "path": "java",
+    "name": "Java",
+    "checked": false
+  }
+]
