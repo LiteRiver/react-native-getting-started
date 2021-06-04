@@ -46,6 +46,7 @@ const HeaderRight = ({changed, onSave}) => {
 
 const SelectLanguageScreen = ({navigation}) => {
   const toast = useToast();
+  const [loaded, setLoaded] = useState(false);
   const [languages, setLanguages] = useState([]);
   const [capture, setCapture] = useState([]);
   const [changed, setChanged] = useState(false);
@@ -53,41 +54,52 @@ const SelectLanguageScreen = ({navigation}) => {
 
   // load languages
   useEffect(() => {
-    const loadedLanguages = languageStore.get();
+    languageStore.getAsync().then(loadedLanguages => {
+      setLanguages(loadedLanguages);
+      setCapture(
+        loadedLanguages.map(t => {
+          return {checked: t.checked};
+        }),
+      );
+      setLoaded(true);
+    });
 
-    setLanguages(loadedLanguages);
-    setCapture(
-      loadedLanguages.map(t => {
-        return {checked: t.checked};
-      }),
-    );
-  }, []);
+    return () => {
+      selectLanguages(languageStore.getSelected());
+    };
+  }, [selectLanguages]);
 
   // check if changes
   useEffect(() => {
-    let flag = false;
+    if (!loaded) {
+      return;
+    }
 
     for (let i = 0; i < languages.length; i++) {
       if (languages[i].checked !== capture[i].checked) {
-        flag = true;
-        break;
+        setChanged(true);
+        return;
       }
     }
 
-    setChanged(flag);
-  }, [navigation, languages, capture]);
+    setChanged(false);
+  }, [navigation, languages, capture, loaded]);
 
   // save changes
   const onSave = useCallback(() => {
-    languageStore.set(languages);
+    setLanguages(languages);
     setCapture(
       languages.map(t => {
         return {checked: t.checked};
       }),
     );
-    selectLanguages(languageStore.getSelected());
+
+    (async () => {
+      await languageStore.setAsync(languages);
+    })();
+
     toast.show('The languages have been saved.');
-  }, [selectLanguages, languages, toast]);
+  }, [languages, toast]);
 
   // configure header right
   useEffect(() => {

@@ -9,8 +9,14 @@ const SortLanguageScreen = () => {
   const {selectLanguages} = useContext(LanguageContext);
 
   useEffect(() => {
-    setData(languageStore.get());
-  }, []);
+    languageStore.getAsync().then(languages => setData(languages));
+
+    return () => {
+      languageStore
+        .getSelectedAsync()
+        .then(selectedLanguages => selectLanguages(selectedLanguages));
+    };
+  }, [selectLanguages]);
 
   const renderItem = useCallback(({item, index, drag, isActive}) => {
     return (
@@ -31,8 +37,9 @@ const SortLanguageScreen = () => {
       keyExtractor={keyExtractor}
       onDragEnd={({data: sortedData}) => {
         setData(sortedData);
-        languageStore.set(sortedData);
-        selectLanguages(languageStore.getSelected());
+        (async () => {
+          await languageStore.setAsync(sortedData);
+        })();
       }}
       activationDistance={20}
     />

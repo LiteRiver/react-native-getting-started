@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import LanguageTab from './LanguageTab';
 import LanguageContext from '../contexts/LanguageContext';
+import {Dimensions} from 'react-native';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -12,7 +13,8 @@ const LanguageScreen = () => {
     <Tab.Navigator
       backBehavior="none"
       lazy={true}
-      tabBarOptions={{scrollEnabled: true}}>
+      tabBarOptions={{scrollEnabled: true}}
+      initialLayout={{width: Dimensions.get('window').width}}>
       <Tab.Screen name={'Popular(ALL)'} key={'ALL'} options={{title: 'ALL'}}>
         {props => <LanguageTab language={''} />}
       </Tab.Screen>

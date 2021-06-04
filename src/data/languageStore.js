@@ -22,4 +22,22 @@ const set = tags => {
   return MMKV.setArray(KEY, tags);
 };
 
-export default {get, set, getSelected};
+const getAsync = async () => {
+  const tags = await MMKV.getArrayAsync(KEY);
+  if (!tags) {
+    return helpers.clone(defaultTags);
+  }
+
+  return tags;
+};
+
+const getSelectedAsync = async () => {
+  const tags = await getAsync();
+  return tags.filter(tag => tag.checked && tag.name !== 'ALL');
+};
+
+const setAsync = async tags => {
+  return await MMKV.setArrayAsync(KEY, tags);
+};
+
+export default {get, set, getSelected, getAsync, setAsync, getSelectedAsync};
