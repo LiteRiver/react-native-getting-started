@@ -1,6 +1,9 @@
 import qs from 'qs';
+import MMKVStorage from 'react-native-mmkv-storage';
 
 const QUALIFIERS = ['language', 'user', 'repo', 'in'];
+const CACHE_HOURS = 4;
+const MMKV = new MMKVStorage.Loader().initialize();
 
 async function get(url, options = {}) {
   const {query} = options;
@@ -10,8 +13,14 @@ async function get(url, options = {}) {
     fullUrl = `${fullUrl}?${qs.stringify(query, {format: 'RFC1738'})}`;
   }
 
-  console.log(':::::::::::::::::fetch data::::::::::::::');
-  console.log(fullUrl);
+  if (options.cache === true) {
+    const cached = MMKV.getMap(fullUrl);
+    if (isCacheValid(cached)) {
+      return cached.entity;
+    } else if (cached) {
+      MMKV.removeItem(fullUrl);
+    }
+  }
 
   const res = await fetch(fullUrl, {
     headers: {
@@ -23,7 +32,21 @@ async function get(url, options = {}) {
     throw new Error(`response error ${res.status}`);
   }
 
-  return await res.json();
+  const entity = await res.json();
+
+  if (options.cache === true) {
+    const now = new Date();
+    now.setHours(now.getHours() + CACHE_HOURS);
+
+    const cached = {
+      entity: entity,
+      expireAt: now.getTime(),
+    };
+
+    MMKV.setMap(fullUrl, cached);
+  }
+
+  return entity;
 }
 
 function buildSearchQuery(options = {}) {
@@ -57,6 +80,21 @@ function buildQualifiers(options) {
   });
 
   return str.trim();
+}
+
+function isCacheValid(cached) {
+  const now = new Date();
+  if (cached) {
+    const expiredAt = new Date(cached.expireAt);
+    return (
+      expiredAt.getUTCFullYear() === now.getUTCFullYear() &&
+      expiredAt.getUTCMonth() === now.getUTCMonth() &&
+      expiredAt.getUTCDate() === now.getUTCDate() &&
+      expiredAt > now
+    );
+  } else {
+    return false;
+  }
 }
 
 export default {get, buildSearchQuery};

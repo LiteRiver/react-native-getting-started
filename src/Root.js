@@ -25,7 +25,6 @@ const Root = () => {
               headerShown: false,
               headerTitleAlign: 'center',
             }}>
-            <Stack.Screen name={Screens.Welcome} component={WelcomeScreen} />
             <Stack.Screen name={Screens.Home} component={HomeScreen} />
             <Stack.Screen
               name={Screens.SelectLanguage}
@@ -43,6 +42,7 @@ const Root = () => {
                 title: 'Sort Languages',
               }}
             />
+            <Stack.Screen name={Screens.Welcome} component={WelcomeScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </LanguageContext.Provider>

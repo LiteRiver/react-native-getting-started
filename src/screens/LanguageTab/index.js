@@ -19,7 +19,7 @@ const LanguageTab = ({language}) => {
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  async function fetchTrending() {
+  async function fetchRepos() {
     if (!loading && !refreshing) {
       return;
     }
@@ -32,7 +32,6 @@ const LanguageTab = ({language}) => {
       });
 
       setData([...data, ...res.items]);
-    } catch (error) {
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -44,7 +43,7 @@ const LanguageTab = ({language}) => {
   }, []);
 
   useEffect(() => {
-    fetchTrending();
+    fetchRepos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, refreshing]);
 

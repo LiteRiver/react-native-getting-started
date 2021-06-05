@@ -20,6 +20,7 @@ class Repo {
         page: opts.page,
         per_page: opts.per_page,
       },
+      cache: true,
     });
   }
 }
